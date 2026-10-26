@@ -1,0 +1,11 @@
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.env
+*.py[cod]
+data/relay.db
+data/relay.db-*
+data/*.bak
+data/backups/
+.DS_Store

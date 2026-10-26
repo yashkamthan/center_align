@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relay — Autonomous Operations Worker</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div>
+          <div class="brand">Relay</div>
+          <div class="subtitle">Autonomous Operations Worker</div>
+        </div>
+        <div class="planner-status">
+          <span class="dot live"></span>
+          <span>Planner: Local rules engine</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel task-panel">
+          <h2>New task</h2>
+          <textarea id="taskInput" rows="4">Process the latest invoice from Acme Labs and confirm when it has been entered.</textarea>
+          <div class="actions-row">
+            <button id="runTaskBtn">Run task</button>
+            <label class="checkbox-wrap">
+              <input id="injectFailureToggle" type="checkbox" />
+              Inject one temporary finance API failure
+            </label>
+          </div>
+          <div class="example-list">
+            <button class="example-btn" data-task="Process the latest invoice from Acme Labs and confirm when it has been entered.">Normal success</button>
+            <button class="example-btn" data-task="Process invoice INV-2026-081.">Duplicate invoice</button>
+            <button class="example-btn" data-task="Process the latest invoice from Northstar Cloud.">Approval required</button>
+          </div>
+        </section>
+
+        <section class="panel status-panel">
+          <h2>Task status</h2>
+          <div id="taskStatus" class="status-pill idle">Idle</div>
+          <div id="taskSummary" class="summary-text">No task has started yet.</div>
+        </section>
+
+        <section class="panel timeline-panel">
+          <h2>Execution timeline</h2>
+          <div id="executionTimeline" class="timeline"></div>
+        </section>
+
+        <section class="panel plan-panel">
+          <h2>Plan</h2>
+          <ul id="planList" class="plan-list"></ul>
+        </section>
+
+        <section class="panel notes-panel">
+          <h2>Tool observation</h2>
+          <pre id="toolObservations">Waiting for task execution.</pre>
+        </section>
+
+        <section class="panel evidence-panel">
+          <h2>Evidence</h2>
+          <pre id="evidencePanel">No evidence available.</pre>
+        </section>
+
+        <section class="panel approvals-panel">
+          <h2>Pending approvals</h2>
+          <div id="approvalList" class="approval-list"></div>
+        </section>
+
+        <section class="panel ledger-panel">
+          <h2>Finance ledger</h2>
+          <div id="kpiCards" class="kpi-cards"></div>
+          <div class="ledger-actions">
+            <input id="ledgerSearch" type="text" placeholder="Search vendor or invoice" />
+            <button id="refreshLedgerBtn">Refresh</button>
+          </div>
+          <div id="ledgerTable" class="ledger-table"></div>
+        </section>
+
+        <section class="panel overdue-panel">
+          <h2>Overdue invoices</h2>
+          <div id="overdueTable" class="overdue-table"></div>
+        </section>
+
+        <section class="panel runs-panel">
+          <h2>Run history</h2>
+          <div id="runHistory" class="run-history"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
